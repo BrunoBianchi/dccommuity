@@ -118,7 +118,7 @@ fs.readdir("./src/api/",(err,files)=>{
         }
     });
 })
-client.login('OTY3Mzk0MDQ1Nzc5NDAyNzUz.YmPp6Q.C2NOtaazFWfw9YOOpALcAfIe0Yk')
+client.login('OTY3Mzk0MDQ1Nzc5NDAyNzUz.GRPIBa.yVpYfzh-FJCIzqYNmfcL4G_H7wnmg5-CMj-lpU')
 client.on("ready",()=>{
     console.log(`Logged in as ${client.user.tag}!`);
 })
