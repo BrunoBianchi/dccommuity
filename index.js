@@ -10,8 +10,8 @@ var bodyParser = require("body-parser");
 const fs = require("fs")
 var path = require('path') 
 const axios = require('axios');
-var CLIENT_ID = process.env.CLIENT_ID
-var  CLIENT_SECRET = process.env.CLIENT_SECRET
+var CLIENT_ID = 967394045779402753
+var  CLIENT_SECRET = "2gemSgon2RZ9q4s8hZujjJEzYCBhMdz_"
 var MarkdownIt = require('markdown-it'),
     md = new MarkdownIt();
 const disc_url = `https://discordapp.com/api/oauth2/authorize?client_id=${CLIENT_ID}&scope=identify%20guilds&response_type=code`;
@@ -118,7 +118,7 @@ fs.readdir("./src/api/",(err,files)=>{
         }
     });
 })
-client.login(process.env.token)
+client.login('OTY3Mzk0MDQ1Nzc5NDAyNzUz.YmPp6Q.C2NOtaazFWfw9YOOpALcAfIe0Yk')
 client.on("ready",()=>{
     console.log(`Logged in as ${client.user.tag}!`);
 })
