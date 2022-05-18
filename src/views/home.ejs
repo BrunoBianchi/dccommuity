@@ -1,0 +1,314 @@
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.js" integrity="sha512-2rUSTSAeOO02jF6eBqENNqPs1EohenJ5j+1dgDPdXSLz9nOlrr8DJk4zW/lDy8rjhGCSonW3Gx812XJQIKZKJQ==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" /><script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://kit.fontawesome.com/3bad20df7c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="./home.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
+
+<nav  class="navbar navbar-expand-lg navbar-dark navbar-default" style="box-shadow:0 4px 8px 0 #000000" >
+  
+  <div  class="container-fluid">
+    
+    <a translate="no" class="navbar-brand" href="/" style="font-size:30px;text-transform: uppercase;
+    font-weight: 1000;">DCBLOG</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+     </button>
+     
+     <div class="collapse navbar-collapse" id="navbarsExample09">
+       
+        <ul class="navbar-nav mr-auto"  style="font-size: 20px;" >     
+           
+           <a href="/requests">
+              <li class="nav-item active">
+                 <span  class="nav-link">Requests</span>
+              </li>
+           </a>   
+           <a href="/competition">
+              <li class="nav-item active">
+                 <span  class="nav-link">Competition</span>
+              </li>
+           </a>    
+           <a href="/teams">
+            <li class="nav-item active">
+               <span  class="nav-link">Teams</span>
+            </li>
+         </a>   
+         <a href="/premium">
+          <li class="nav-item active">
+             <span  class="nav-link">Premium<sup ><i style="color:#dace72" class="far fa-gem"></i></sup></span>
+          </li>
+       </a>                                          
+        </ul>
+        <%if(!locals.user) {%>
+           <ul class="navbar-nav mr-auto" style="font-size: 15px;">
+           <a style="color:black;text-decoration: none;" href="/login?uri=<%=encodeURIComponent(`${locals.url.slice(1)}`)%>">
+              <li class="nav-item">
+                 <span id="login"  class="nav-link"><span class="icon" style="color:black;margin-right:3px;margin-top:10px;"><i class="fab fa-discord" aria-hidden="true"></i> Login With Discord</span> </span>
+              </li>
+           </a>      
+       </ul>
+        <%}else {%>
+        <li id="drop" class="nav-item dropdown" style="color:white;display: initial;">
+           <a class="dropdown-toggle" id="user_drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<img style="border-radius:50%;width:40px;height:40px;    max-width: 100%;max-height: 100%;" <%if(user.avatar === null ){%>src="https://i.pinimg.com/736x/34/91/f3/3491f3e50ab6a4d51a348f9cc2419842.jpg"<%}else{%> src="https://images.discordapp.net/avatars/<%=user.id%>/<%=user.avatar%>.png?size=512" <%}%>> <%=user.username%></a>
+<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4" style="background-color;white;;cursor:pointer;color:black">
+<a  class="dropdown-item" href="/dashboard" style="color: white"><i class="far fa-user"></i> Dashboard</a>
+<div class="dropdown-divider"></div>
+
+  <div class="dropdown-divider"></div>
+
+<a   class="dropdown-item" href="/logout" style="color: white">Log Out</a>
+</div>
+        </li>
+        <%}%>  
+     </div>
+  </div>
+  <li   id="drop" class="nav-item dropdown" style="color:white;display: initial;">
+    <a style="font-size:30px" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"><i  class="fas fa-language"></i>  </a>          
+      
+      <div  class="dropdown-menu dropdown-menu-right dropdown-info"  aria-labelledby="menuLanguage">
+        <a href="javascript:trocarIdioma('pt')" class="dropdown-item">
+          <img src="https://image.flaticon.com/icons/svg/580/580836.svg" width="20px" height="20px">
+          &nbsp;Portuguese
+        </a>
+          <a href="javascript:trocarIdioma('en')" class="dropdown-item font-weight-bolder s-nuvem">
+            <img src="https://image.flaticon.com/icons/svg/330/330459.svg" width="20px" height="20px">
+            &nbsp;English
+          </a>
+          <a href="javascript:trocarIdioma('es')" class="dropdown-item font-weight-bolder s-nuvem">
+            <img src="https://image.flaticon.com/icons/svg/580/580870.svg" width="20px" height="20px">
+            &nbsp;Espanish
+          </a>
+          <a href="javascript:trocarIdioma('fr')" class="dropdown-item font-weight-bolder s-nuvem">
+            <img src="https://image.flaticon.com/icons/svg/330/330490.svg" width="20px" height="20px">
+            &nbsp;French
+          </a>
+      </div>
+
+</li>
+
+</nav> 
+
+    <div class="container"> 
+        <div class="row">
+            <div class="col-md-8 ">
+              <div class="servers-cards">
+                <div class="servers-cards-info">
+                  <h2>Featured Servers</h2>
+                  <span>Random <a href="/search?premium=true">Premium</a> Discord Servers.</span>
+                </div>
+                   <div class="cards">
+                     <%if(data){data.filter(server=>server.premium === true).slice(0,10).forEach(server=>{%>
+                       <div class="card">
+                         <div class="row ">
+                           <div class="col-md-2">
+                               <img <%if(server.icon){%> src="https://cdn.discordapp.com/icons/<%=server.id%>/<%=server.icon%>.png" <%}else{%> src="https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2021/03/i8qztv1ucn3bhsttuz1q.jpg" <%}%> >
+                             </div>
+                             <div class="col-md-10 px-3">
+                               <div class="card-block px-3">
+                                 
+                                 <h4 class="card-title"><a href="/server/<%=server.id%>"><%=server.name%> <%if(server.premium === true) {%><i id="premium" class="fa-solid fa-crown"></i><%}%></a>  
+                                 <a href="/server/<%=server.id%>/join" style="float:right" class="btn btn-primary">Join Server</a>
+                                 <a href="#" style="float:right" class="btn btn-primary"><i class="fa-solid fa-caret-up"></i> Vote (<%=server.votes%>)</a>
+                               </h4>
+                                 <span class="card-info">Bumped <%=moment(server.lastBump, "YYYYMMDD").fromNow()%> | 
+                                   <%server.tags.slice(0,2).forEach(tag=>{%>
+                                   <a href="/search?tags=<%=tag.name.toLowerCase()%>" class="card-tags"><%=tag.name%></a>
+                                   <%})%>
+                                   <%if(server.tags.length >=3){%>
+                                      <a href="/server/<%=server.id%>" class="card-tags">+<%=parseInt(server.tags.length) - 2%></a>
+                                   <%}%>
+                                 </span>
+                                 <div class="card-content">
+                                   <p class="card-text"><%=server.content%></p>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       <%})}%>
+                   </div>
+                   <div onclick="showMore('New')" class="container" id="servers-cards-showmore">Show More <i class="fa-solid fa-angles-down"></i></div>
+                 </div>
+                 <div id="ad-servers" class="container">
+AD HERE
+                 </div>
+              <div class="servers-cards">
+                <div class="servers-cards-info">
+                  <h2>Recently Bumped</h2>
+                  <span>Recently Bumped Discord Servers.</span>
+                </div>
+                <div class="cards">
+                  <%if(data){data.sort((a,b)=>{
+                   return (b.premium - a.premium) || new Date(b.lastBump) -  new Date(a.lastBump)
+                   }).slice(0,10).forEach(server=>{%>
+                    <div class="card">
+                      <div class="row ">
+                        <div class="col-md-2">
+                            <img <%if(server.icon){%> src="https://cdn.discordapp.com/icons/<%=server.id%>/<%=server.icon%>.png" <%}else{%> src="https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2021/03/i8qztv1ucn3bhsttuz1q.jpg" <%}%> >
+                          </div>
+                          <div class="col-md-10 px-3">
+                            <div class="card-block px-3">
+                              
+                              <h4 class="card-title"><a href="/server/<%=server.id%>"><%=server.name%> <%if(server.premium === true) {%><i id="premium" class="fa-solid fa-crown"></i><%}%></a>  
+                                <a href="/server/<%=server.id%>/join" style="float:right" class="btn btn-primary">Join Server</a>
+                              <a href="#" style="float:right" class="btn btn-primary"><i class="fa-solid fa-caret-up"></i> Vote (<%=server.votes%>)</a>
+                            </h4>
+                              <span class="card-info">Bumped <%=moment(server.lastBump, "YYYYMMDD").fromNow()%> | 
+                                <%server.tags.slice(0,2).forEach(tag=>{%>
+                                <a href="/search?tags=<%=tag.name.toLowerCase()%>" class="card-tags"><%=tag.name%></a>
+                                <%})%>
+                                <%if(server.tags.length >=3){%>
+                                   <a href="/server/<%=server.id%>" class="card-tags">+<%=parseInt(server.tags.length) - 2%></a>
+                                <%}%>
+
+                              </span>
+                              <div class="card-content">
+                                <p class="card-text"><%=server.content%></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <%})}%>
+                </div>
+                <div onclick="showMore('New')" class="container" id="servers-cards-showmore">Show More <i class="fa-solid fa-angles-down"></i></div>
+              </div>
+
+              <div class="servers-cards">
+                <div class="servers-cards-info">
+                  <h2>New Servers</h2>
+                  <span>Recently Added Discord Servers.</span>
+                </div>
+                   <div class="cards">
+                     <%if(data){data.sort((a,b)=>{
+                      return  new Date(b.createdAt) -  new Date(a.createdAt)
+                      }).slice(0,10).forEach(server=>{%>
+                       <div class="card">
+                         <div class="row ">
+                           <div class="col-md-2">
+                               <img <%if(server.icon){%> src="https://cdn.discordapp.com/icons/<%=server.id%>/<%=server.icon%>.png" <%}else{%> src="https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2021/03/i8qztv1ucn3bhsttuz1q.jpg" <%}%> >
+                             </div>
+                             <div class="col-md-10 px-3">
+                               <div class="card-block px-3">
+                                 
+                                <h4 class="card-title"><a href="/server/<%=server.id%>"><%=server.name%> <%if(server.premium === true) {%><i id="premium" class="fa-solid fa-crown"></i><%}%></a>  
+                                  <a href="/server/<%=server.id%>/join" style="float:right" class="btn btn-primary">Join Server</a>
+                                 <a href="#" style="float:right" class="btn btn-primary"><i class="fa-solid fa-caret-up"></i> Vote (<%=server.votes%>)</a>
+                               </h4>
+                                 <span class="card-info">Bumped <%=moment(server.lastBump, "YYYYMMDD").fromNow()%> | 
+                                   <%server.tags.slice(0,2).forEach(tag=>{%>
+                                   <a href="/search?tags=<%=tag.name.toLowerCase()%>" class="card-tags"><%=tag.name%></a>
+                                   <%})%>
+                                   <%if(server.tags.length >=3){%>
+                                      <a href="/server/<%=server.id%>" class="card-tags">+<%=parseInt(server.tags.length) - 2%></a>
+                                   <%}%>
+   
+                                 </span>
+                                 <div class="card-content">
+                                   <p class="card-text"><%=server.content%></p>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       <%})}%>
+                   </div>
+                   <div onclick="showMore('New')" class="container" id="servers-cards-showmore">Show More <i class="fa-solid fa-angles-down"></i></div>
+                 </div>             
+
+
+
+
+
+            </div>
+            <div  class="col-md-4">
+                <div class="side-menu sticky-top">
+                  <form method="get" action="/search/">
+                    <div class="container-slide">
+                      <h1 >Filters</h1>
+                      <div class="length range__slider" data-min="1" data-max="500">
+                        <div class="length__title field-title" data-length='1'>Server Members</div>
+                        <input name="memberCount" id="slider" type="range" min="1" max="500" value="1" />
+                      </div>
+                    
+                      <div class="settings">
+                        <span class="settings__title field-title">settings</span>
+                        <div class="setting">
+                          <input name="premium" type="checkbox" id="uppercase" value="true" onClick="if(this.value === 'false') {this.value = true}else {this.value =false}" checked />
+                          <label for="uppercase">Premium</label>
+                        </div>
+                        <div class="setting">
+
+                          <input name="NSFW" type="checkbox" value="true" onClick="if(this.value === 'false') {this.value = true}else {this.value =false}" id="symbol" />
+                          
+                          <label for="symbol">SFW</label>
+                        </div>
+                      </div>
+                    
+                      <button class="btn generate" id="generate">Filter</button>
+                    </div>
+
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">        
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">MyShopy is a web builder website connected with discord. MyShopy is not an affiliate and does not belong to discord.com</p>
+          </div>
+
+          <div class="col-xs-3 col-md-3">
+            <h6>Important Links</h6>
+            <ul class="footer-links">
+              <li><a>Terms and condition</a></li>
+              <li><a>Privacy Policy</a></li>
+              <li><a>DMCA</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-3 col-md-3">
+            <h6>Extra</h6>
+            <ul class="footer-links">
+              <li><div class="custom-control custom-switch"> <input type="checkbox" class="custom-control-input" id="darkmode" /> <label class="custom-control-label" for="darkmode">Dark Mode</label> </div></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
+         <a style="background-color:initial;border-bottom:initial;" href="#">MyShopy</a>.
+              <br>
+<a href="//www.dmca.com/Protection/Status.aspx?ID=8f0b276b-9b91-49f4-aa29-528f6678161e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca-badge-w100-5x1-02.png?ID=8f0b276b-9b91-49f4-aa29-528f6678161e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-4 col-md-4"> 
+          <p>Made with <i id="heart" class="fas fa-heart"></i> by <a href="https://twitter.com/brunoRb19">Bruninho</a></p>
+        </div>
+        <div class="col-xs-4 col-md-4"> 
+          <p>Join us on <i style="color:	#7289da" class="fab fa-discord" aria-hidden="true"></i> <a target="_blank" href="https://discord.gg/zkvmME8KcK">Discord</a></p>            </div>
+        <div class="col-xs-4 col-md-4"> 
+          <p>Powered by <i style="color:#6ea569" class="fab fa-node-js"></i><a target="_blank" href="https://nodejs.org/en/">&nbsp;Node.js</a>, 
+          </p>
+        </div>                        
+      </div>           
+      </div>
+      </footer>
+
+      <script src="./slider.js"></script>

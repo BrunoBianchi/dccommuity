@@ -1,0 +1,198 @@
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.js" integrity="sha512-2rUSTSAeOO02jF6eBqENNqPs1EohenJ5j+1dgDPdXSLz9nOlrr8DJk4zW/lDy8rjhGCSonW3Gx812XJQIKZKJQ==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" /><script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://kit.fontawesome.com/3bad20df7c.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.js" integrity="sha512-2rUSTSAeOO02jF6eBqENNqPs1EohenJ5j+1dgDPdXSLz9nOlrr8DJk4zW/lDy8rjhGCSonW3Gx812XJQIKZKJQ==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" /><script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://kit.fontawesome.com/c6b89959df.js" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+<nav  class="navbar navbar-expand-lg navbar-dark navbar-default" style="box-shadow:0 4px 8px 0 #000000" >
+  
+  <div  class="container-fluid">
+    
+    <a translate="no" class="navbar-brand" href="/" style="font-size:30px;text-transform: uppercase;
+    font-weight: 1000;">DCBLOG</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+     </button>
+     
+     <div class="collapse navbar-collapse" id="navbarsExample09">
+       
+        <ul class="navbar-nav mr-auto"  style="font-size: 20px;" >     
+           
+           <a href="/requests">
+              <li class="nav-item active">
+                 <span  class="nav-link">Requests</span>
+              </li>
+           </a>   
+           <a href="/competition">
+              <li class="nav-item active">
+                 <span  class="nav-link">Competition</span>
+              </li>
+           </a>    
+           <a href="/teams">
+            <li class="nav-item active">
+               <span  class="nav-link">Teams</span>
+            </li>
+         </a>   
+         <a href="/premium">
+          <li class="nav-item active">
+             <span  class="nav-link">Premium<sup ><i style="color:#dace72" class="far fa-gem"></i></sup></span>
+          </li>
+       </a>                                          
+        </ul>
+        <%if(!locals.user) {%>
+           <ul class="navbar-nav mr-auto" style="font-size: 15px;">
+           <a style="color:black;text-decoration: none;" href="/login?uri=<%=encodeURIComponent(`${locals.url.slice(1)}`)%>">
+              <li class="nav-item">
+                 <span id="login"  class="nav-link"><span class="icon" style="color:black;margin-right:3px;margin-top:10px;"><i class="fab fa-discord" aria-hidden="true"></i> Login With Discord</span> </span>
+              </li>
+           </a>      
+       </ul>
+        <%}else {%>
+        <li id="drop" class="nav-item dropdown" style="color:white;display: initial;">
+           <a class="dropdown-toggle" id="user_drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<img style="border-radius:50%;width:40px;height:40px;    max-width: 100%;max-height: 100%;" <%if(user.avatar === null ){%>src="https://i.pinimg.com/736x/34/91/f3/3491f3e50ab6a4d51a348f9cc2419842.jpg"<%}else{%> src="https://images.discordapp.net/avatars/<%=user.id%>/<%=user.avatar%>.png?size=512" <%}%>> <%=user.username%></a>
+<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4" style="background-color;white;;cursor:pointer;color:black">
+<a  class="dropdown-item" href="/dashboard" style="color: white"><i class="far fa-user"></i> Dashboard</a>
+<div class="dropdown-divider"></div>
+
+  <div class="dropdown-divider"></div>
+
+<a   class="dropdown-item" href="/logout" style="color: white">Log Out</a>
+</div>
+        </li>
+        <%}%>  
+     </div>
+  </div>
+  <li   id="drop" class="nav-item dropdown" style="color:white;display: initial;">
+    <a style="font-size:30px" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"><i  class="fas fa-language"></i>  </a>          
+      
+      <div  class="dropdown-menu dropdown-menu-right dropdown-info"  aria-labelledby="menuLanguage">
+        <a href="javascript:trocarIdioma('pt')" class="dropdown-item">
+          <img src="https://image.flaticon.com/icons/svg/580/580836.svg" width="20px" height="20px">
+          &nbsp;Portuguese
+        </a>
+          <a href="javascript:trocarIdioma('en')" class="dropdown-item font-weight-bolder s-nuvem">
+            <img src="https://image.flaticon.com/icons/svg/330/330459.svg" width="20px" height="20px">
+            &nbsp;English
+          </a>
+          <a href="javascript:trocarIdioma('es')" class="dropdown-item font-weight-bolder s-nuvem">
+            <img src="https://image.flaticon.com/icons/svg/580/580870.svg" width="20px" height="20px">
+            &nbsp;Espanish
+          </a>
+          <a href="javascript:trocarIdioma('fr')" class="dropdown-item font-weight-bolder s-nuvem">
+            <img src="https://image.flaticon.com/icons/svg/330/330490.svg" width="20px" height="20px">
+            &nbsp;French
+          </a>
+      </div>
+
+</li>
+
+</nav>
+<div class="container">
+  
+  <div class="row">
+     <div class="col-12 col-md-2">
+      <img class='server-icon' <%if(guild.icon){%> src="https://cdn.discordapp.com/icons/<%=guild.id%>/<%=guild.icon%>.png" <%}else{%> src="https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2021/03/i8qztv1ucn3bhsttuz1q.jpg" <%}%> >
+     </div>
+     <div class="col-12 col-md-10 ">
+      <h1><%=guild.name%></h1>
+      <div class="container" >
+        <div id="content">
+          <p><%=guild.content%></p> 
+        </div>
+        <div class="server-details">
+         <span><i style="color:#da9172" class="fa-solid fa-circle"></i> Bumped <%=moment(guild.lastBump, "YYYYMMDD").fromNow()%> </span>
+      </div>
+
+      </div>
+
+     </div>
+  </div>
+  <ul class="nav nav-tabs" role="tablist">
+   <li class="nav-item">
+     <a class="nav-link active" href="#Overview" role="tab" data-toggle="tab">Overview</a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="#Insights" role="tab" data-toggle="tab">Insights</a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="#references" role="tab" data-toggle="tab">references</a>
+   </li>
+ </ul>
+ <br>
+  <div class='row'>
+     
+    <div class="col-md-7">
+<!-- Bootstrap CSS -->
+<!-- jQuery first, then Bootstrap JS. -->
+<!-- Nav tabs -->
+
+ <!-- Tab panes -->
+ <div class="tab-content">
+   <div role="tabpanel" class="tab-panes fade show active" id="Overview">
+     <div class="container" id="description_content">
+      <%-md.render(`${guild.description}`)%>
+     </div>
+     
+     
+    </div>
+   <div role="tabpanel" class="tab-pane fade" id="Insights">
+
+      <h4>Emotes</h4>
+      <hr>
+      <%guild.emojis.cache.forEach(emoji=>{%>
+        <img class="emojis"  src="https://cdn.discordapp.com/emojis/<%=emoji.id%>.png">
+        <%})%>
+   </div>
+   <div role="tabpanel" class="tab-pane fade" id="references">ccc</div>
+ </div>
+    </div>
+    <div class="col-md-5 ">
+      <div class="server-info" >
+         <h2><i class="fa-solid fa-circle-info"></i> Details</h2>
+        <span><i class="fa-solid fa-users"></i> <%=guild.memberCount%> members</span>
+         <span><i class="fa-solid fa-face-grin-tears"></i> <%=guild.emojis.cache.size%> emotes</span>
+      </div>
+      <div class="server-info" >
+         <h2><i class="fa-solid fa-tags"></i> Categories</h2>
+         <%guild.tags.forEach(tag=>{%><a class="tags" href="/search?tags=<%=tag.name%>"><%=tag.name%></a><%})%>
+      </div>
+      <div class="server-info" >
+        <h2>Bump the server</h2>
+      <form action="/bump?server=<%=guild.id%>" method="POST">
+        <button class="btn bump">Bump</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+
+      tippy('[data-tippy-content]');
+  });
+ </script>
+ <link rel="stylesheet" href="/server.css">

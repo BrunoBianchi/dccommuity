@@ -1,0 +1,122 @@
+body {
+    background: #070510;
+    font-family: "Roboto", sans-serif;
+    overflow-x: hidden;
+    color:#DCF2FF;
+    
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #8c72da;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  .content{
+      padding:1px;
+      width:100%;
+      height:200px;
+      word-break: break-all;
+  }
+  .emojis{
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      object-fit: cover;
+      margin-right:2px;
+      margin-bottom:5px;
+  }
+  .server-icon{
+      border-radius:50%;
+      height:170px;
+      width:170px;
+  }
+  hr{
+      background-color:#8c72da;
+  }
+  .tags {
+    font-size:15px;
+    background-color:#1e2227;
+    border-radius:3px;
+    padding:6px;
+    color:white;
+    margin-right:5px;
+}
+.tags:hover {
+    outline:none;
+    border: none;
+    color:white;
+    background-color:#2c2a34;
+    text-decoration: none;
+
+}
+.server-info{
+    
+    margin-bottom:40px;
+}
+.server-info h2{
+    margin-bottom:20px;
+}
+.server-info span{
+    font-size:15px;
+    display:table;
+    margin-bottom:5px;
+}
+.server-details span{
+    margin-right:10px;
+}
+.tab-pane h4{
+    margin-top:-25px;
+}
+ .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+    color:white;
+    background-color:transparent;
+    border:transparent;
+    border-bottom:3px solid #8c72da;
+}
+.nav-tabs .nav-link {
+    border:none;
+    color:rgba(255, 255, 255, 0.5);
+    
+}
+.nav-tabs .nav-link:hover {
+    border:none;
+    border-bottom:3px solid #8c72da;
+
+}
+.btn.bump {
+    user-select: none;
+    position: relative;
+    width: 50%;
+    height: 50px;
+    margin: 10px 0;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+  .btn.bump:active {
+    transform: translateY(-3%);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.08);
+  }
+  #content{
+      width:100%;
+      max-height:200px;
+      overflow: auto; 
+  }
